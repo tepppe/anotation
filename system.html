@@ -733,7 +733,6 @@ function shuryou(a,b,c){
   var tag = Number(elmtag.value);
   for(i=sta;i<clo+1;i++){
     chalk(tag,i);
-    chalk2(tag,i);
   }
   shuuryou.innerHTML="";
   shuuryou2.innerHTML="";
@@ -990,10 +989,11 @@ function anohyouji(a,b){
   document.getElementById("hyoji2").style.display ="none";
   var hyoji=document.getElementById("hyoji");
   var hyoji2_1=document.getElementById("hyoji2");
+  console.log("hyuji");
   for(var jj=0;jj<kosuu;jj++){
     if(Number(selected_second1[jj])*byousu<=b&&b<=Number(selected_second2[jj])*byousu){
       if(a==selected_tag[jj]){
-        hyoji.innerHTML="タグ名："+select_box[selected_tag[jj]-1]+"<br/>"+select_box[selected_tag[jj]-1]+"の状態："+jotai[selected_tag[jj]-1][selected_jotai[ii]]+"<br/>コメント："+selected_comment[jj]+"<br/>秒数："+selected_second1[jj]+"秒から"+selected_second2[jj]+"秒";
+        hyoji.innerHTML="タグ名："+select_box[selected_tag[jj]-1]+"<br/>"+select_box[selected_tag[jj]-1]+"の状態："+jotai[selected_tag[jj]-1][selected_jotai[jj]]+"<br/>コメント："+selected_comment[jj]+"<br/>秒数："+selected_second1[jj]+"秒から"+selected_second2[jj]+"秒";
         kakikomidake(selected_x[jj],selected_y[jj],selected_select[jj]);
         i1=jj;
         kirikaeruu.addEventListener("click",function(){
@@ -1001,6 +1001,7 @@ function anohyouji(a,b){
             kakikomidake(selected_x[i1],selected_y[i1],selected_select[i1]);
           }
         },false);
+        
       }
     }
   }
@@ -1030,6 +1031,7 @@ function anohyouji2(a,b){
   document.getElementById("hyoji2").style.display ="block";
   var hyoji2=document.getElementById("hyoji2");
   var hyoji_1=document.getElementById("hyoji");
+  console.log("tamatama")
   for(var ii=0;ii<hozon;ii++){
     if(hozonbox_name[ii]==login_name[login-1]){
       if(hozonbox_tag[ii]==a){
@@ -1042,6 +1044,7 @@ function anohyouji2(a,b){
               kakikomidake2(hozonbox_x[i3],hozonbox_y[i3],hozonbox_select[i3]);
             }
           },false);
+          console.log("tama")
         }
       }
     }
@@ -1049,7 +1052,7 @@ function anohyouji2(a,b){
   for(var jj=0;jj<kosuu;jj++){
     if(Number(selected_second1[jj])*byousu<=b&&b<=Number(selected_second2[jj])*byousu){
       if(a==selected_tag[jj]){
-        hyoji_1.innerHTML="タグ名："+select_box[selected_tag[jj]-1]+"<br/>"+select_box[selected_tag[jj]-1]+"の状態："+jotai[selected_tag[jj]-1][selected_jotai[ii]]+"<br/>コメント："+selected_comment[jj]+"<br/>秒数："+selected_second1[jj]+"秒から"+selected_second2[jj]+"秒";
+        hyoji_1.innerHTML="タグ名："+select_box[selected_tag[jj]-1]+"<br/>"+select_box[selected_tag[jj]-1]+"の状態："+jotai[selected_tag[jj]-1][selected_jotai[jj]]+"<br/>コメント："+selected_comment[jj]+"<br/>秒数："+selected_second1[jj]+"秒から"+selected_second2[jj]+"秒";
         i4=jj;
         kirikaeruu2.addEventListener("click",function(){
           if(docchi==1){
@@ -1102,6 +1105,7 @@ function chalk1( i, j ,k ){
 //これ後回し。chalk1の赤バージョン
 function chalk3( i, j ,k ){
   var saisei1 = document.getElementById(i+"x"+j);
+  saisei1.style.color="red"
   saisei1.addEventListener("click",function(){
     var ddd=Math.floor(v.currentTime*byousu);
     v.currentTime=k;
@@ -1138,9 +1142,6 @@ function chalk( i, j ){
   document.getElementById(i+"xx"+j).style.color="red";
 }
 
-function chalk2( i, j ){
-  document.getElementById(i+"x"+j).style.color="red";
-}
 
 function chalkoriginal( i, j ){
   //この下の１０は１秒ごとに区切るための１０
